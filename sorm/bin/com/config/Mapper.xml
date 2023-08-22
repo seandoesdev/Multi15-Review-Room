@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mapper">
+
+	 <!-- signIn -->
+	<select id="clientSignIn" parameterType="hashmap" resultType="ClientDTO">
+		select client_no, client_id, client_pw, client_nm, phone, secession_fl
+		from client
+		where client_id = #{client_id} and client_pw = #{client_pw}
+	</select>
+	
+	<select id="managerSignIn" parameterType="hashmap" resultType="ManagerDTO">
+		select manager_no, manager_id, manager_pw, phone
+		from manager
+		where manager_id = #{manager_id} and manager_pw = #{manager_pw}
+	</select>
+	
+	<!-- signUp -->
+	<insert id="clientSignUp" parameterType="hashmap">
+		insert into client (client_no, client_id, client_pw, client_nm, phone, secession_fl)
+		values (client_seq.nextval, #{client_id}, #{client_pw}, #{client_nm}, #{phone}, 'N')
+	</insert>
+	
+	<insert id="managerSignUp" parameterType="hashmap">
+		insert into manger (manager_no, manager_id, manager_pw, phone)
+		values (manager_seq.nextval, #{manager_id}, #{manager_pw}, #{phone})
+	</insert>
+
+
+	<select id="selectPlaceALL" resultType="PlaceDTO">
+		select place_no, place_nm, place_ard
+		from place
+		order by 1
+	</select>
+
+	<select id="selectResByNo" resultType="ReservationDTO" parameterType="int">
+		select concat(substr(res_date, 1, 4),'년')|| concat(substr(res_date, 5, 2),'월') || concat(substr(res_date, 7),'일') as res_date
+		from reservation
+		where place_no = #{place_no}
+	</select>
+
+	<select id="selectResDate" resultType="ReservationDTO">
+		select place_no, res_date
+		from reservation
+		order by 1
+	</select>
+	
+	<insert id="insertResAll" parameterType="ReservationDTO">
+		insert into reservation (res_no, place_no, client_no, end_use, res_date)
+		values (res_seq.nextval, #{place_no}, #{client_no}, 'N', #{res_date})
+	</insert>
+	
+	<select id="selectResByCno" resultType="ReservationDTO" parameterType="int">
+		select res_no,
+		concat(substr(res_date, 1, 4),'년')|| concat(substr(res_date, 5, 2),'월') || concat(substr(res_date, 7),'일') as res_date
+		from reservation
+		where client_no = #{client_no}
+	</select>
+	
+	
+	<delete id="deleteResAll" parameterType="int">
+		delete from reservation
+		where res_no = #{res_no}
+	</delete>
+	
+	<update id="updateResDate" parameterType="hashmap">
+		update reservation
+		set res_no = #{res_no}, res_date = #{res_date}
+		where client_no = #{client_no}
+	</update>
+	
+	
+	
+	
+	<select id="selectPlaceByMno" resultType="PlaceDTO">
+		select place_no, place_nm, place_ard
+		from place
+		where manager_no = ${manager_no}
+	</select>
+	
+	
+	
+	
+
+	
+
+	
+</mapper>
