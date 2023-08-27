@@ -13,5 +13,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/servlet_study/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/servlet_study/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
+	<classpathentry kind="lib" path="C:/java8_study/mybatis-3.5.13/mybatis-3.5.13.jar"/>
+	<classpathentry kind="lib" path="C:/java8_study/mybatis-3.5.13/ojdbc6_g.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
