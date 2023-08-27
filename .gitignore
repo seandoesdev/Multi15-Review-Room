@@ -11,6 +11,9 @@ local.properties
 .loadpath
 .recommenders
 
+# Tomcat
+class/apache-tomcat-9.0.78/
+
 # Locally stored "Eclipse launch configurations"
 *.launch
 
@@ -34,3 +37,4 @@ local.properties
 *.zip
 *.tar.gz
 *.rar
+
