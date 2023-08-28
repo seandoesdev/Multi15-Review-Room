@@ -12,7 +12,8 @@ local.properties
 .recommenders
 
 # Tomcat
-class/apache-tomcat-9.0.78/
+class/apache-tomcat-9.0.78/webapps/
+class/ShopMiniMallTest/build
 
 # Locally stored "Eclipse launch configurations"
 *.launch
@@ -38,3 +39,4 @@ class/apache-tomcat-9.0.78/
 *.tar.gz
 *.rar
 
+class/apache-tomcat-9.0.78/logs/localhost_access_log.2023-08-28.txt
